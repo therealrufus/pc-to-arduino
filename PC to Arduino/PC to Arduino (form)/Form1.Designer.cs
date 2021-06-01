@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.PortComBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,8 +37,6 @@
             this.sendBtn1 = new System.Windows.Forms.Button();
             this.clearBtn1 = new System.Windows.Forms.Button();
             this.sendBox1 = new System.Windows.Forms.TextBox();
-            this.led1Box1 = new System.Windows.Forms.CheckBox();
-            this.led1Box2 = new System.Windows.Forms.CheckBox();
             this.sendBox2 = new System.Windows.Forms.TextBox();
             this.clearBtn2 = new System.Windows.Forms.Button();
             this.sendBtn2 = new System.Windows.Forms.Button();
@@ -45,13 +44,22 @@
             this.ConnectBtn2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.PortComBox2 = new System.Windows.Forms.ComboBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.rbTee1 = new System.Windows.Forms.RadioButton();
+            this.rbHog1 = new System.Windows.Forms.RadioButton();
+            this.rbHog2 = new System.Windows.Forms.RadioButton();
+            this.rbTee2 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.timerLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PortComBox1
             // 
             this.PortComBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PortComBox1.FormattingEnabled = true;
-            this.PortComBox1.Location = new System.Drawing.Point(61, 10);
+            this.PortComBox1.Location = new System.Drawing.Point(58, 7);
             this.PortComBox1.Name = "PortComBox1";
             this.PortComBox1.Size = new System.Drawing.Size(140, 23);
             this.PortComBox1.TabIndex = 0;
@@ -60,7 +68,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(9, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 1;
@@ -68,7 +76,7 @@
             // 
             // ConnectBtn1
             // 
-            this.ConnectBtn1.Location = new System.Drawing.Point(206, 9);
+            this.ConnectBtn1.Location = new System.Drawing.Point(203, 6);
             this.ConnectBtn1.Name = "ConnectBtn1";
             this.ConnectBtn1.Size = new System.Drawing.Size(87, 24);
             this.ConnectBtn1.TabIndex = 2;
@@ -80,18 +88,17 @@
             // 
             this.consoleRichText1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.consoleRichText1.Location = new System.Drawing.Point(12, 43);
+            this.consoleRichText1.Location = new System.Drawing.Point(12, 40);
             this.consoleRichText1.Name = "consoleRichText1";
             this.consoleRichText1.ReadOnly = true;
-            this.consoleRichText1.Size = new System.Drawing.Size(366, 183);
+            this.consoleRichText1.Size = new System.Drawing.Size(366, 131);
             this.consoleRichText1.TabIndex = 6;
             this.consoleRichText1.Text = "";
-            this.consoleRichText1.TextChanged += new System.EventHandler(this.consoleRichText_TextChanged);
             // 
             // sendBtn1
             // 
             this.sendBtn1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sendBtn1.Location = new System.Drawing.Point(14, 262);
+            this.sendBtn1.Location = new System.Drawing.Point(14, 207);
             this.sendBtn1.Name = "sendBtn1";
             this.sendBtn1.Size = new System.Drawing.Size(87, 27);
             this.sendBtn1.TabIndex = 7;
@@ -102,7 +109,7 @@
             // clearBtn1
             // 
             this.clearBtn1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clearBtn1.Location = new System.Drawing.Point(111, 262);
+            this.clearBtn1.Location = new System.Drawing.Point(111, 207);
             this.clearBtn1.Name = "clearBtn1";
             this.clearBtn1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.clearBtn1.Size = new System.Drawing.Size(87, 27);
@@ -114,39 +121,15 @@
             // sendBox1
             // 
             this.sendBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sendBox1.Location = new System.Drawing.Point(12, 232);
+            this.sendBox1.Location = new System.Drawing.Point(12, 177);
             this.sendBox1.Name = "sendBox1";
             this.sendBox1.Size = new System.Drawing.Size(366, 23);
             this.sendBox1.TabIndex = 9;
             // 
-            // led1Box1
-            // 
-            this.led1Box1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.led1Box1.AutoSize = true;
-            this.led1Box1.Location = new System.Drawing.Point(299, 12);
-            this.led1Box1.Name = "led1Box1";
-            this.led1Box1.Size = new System.Drawing.Size(55, 19);
-            this.led1Box1.TabIndex = 10;
-            this.led1Box1.Text = "ready";
-            this.led1Box1.UseVisualStyleBackColor = true;
-            this.led1Box1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // led1Box2
-            // 
-            this.led1Box2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.led1Box2.AutoSize = true;
-            this.led1Box2.Location = new System.Drawing.Point(680, 11);
-            this.led1Box2.Name = "led1Box2";
-            this.led1Box2.Size = new System.Drawing.Size(55, 19);
-            this.led1Box2.TabIndex = 18;
-            this.led1Box2.Text = "ready";
-            this.led1Box2.UseVisualStyleBackColor = true;
-            // 
             // sendBox2
             // 
             this.sendBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendBox2.Location = new System.Drawing.Point(395, 232);
+            this.sendBox2.Location = new System.Drawing.Point(414, 177);
             this.sendBox2.Name = "sendBox2";
             this.sendBox2.Size = new System.Drawing.Size(365, 23);
             this.sendBox2.TabIndex = 17;
@@ -154,7 +137,7 @@
             // clearBtn2
             // 
             this.clearBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearBtn2.Location = new System.Drawing.Point(491, 262);
+            this.clearBtn2.Location = new System.Drawing.Point(510, 207);
             this.clearBtn2.Name = "clearBtn2";
             this.clearBtn2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.clearBtn2.Size = new System.Drawing.Size(87, 27);
@@ -165,7 +148,7 @@
             // sendBtn2
             // 
             this.sendBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sendBtn2.Location = new System.Drawing.Point(394, 262);
+            this.sendBtn2.Location = new System.Drawing.Point(413, 207);
             this.sendBtn2.Name = "sendBtn2";
             this.sendBtn2.Size = new System.Drawing.Size(87, 27);
             this.sendBtn2.TabIndex = 15;
@@ -177,17 +160,17 @@
             // 
             this.consoleRichText2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.consoleRichText2.Location = new System.Drawing.Point(394, 43);
+            this.consoleRichText2.Location = new System.Drawing.Point(413, 40);
             this.consoleRichText2.Name = "consoleRichText2";
             this.consoleRichText2.ReadOnly = true;
-            this.consoleRichText2.Size = new System.Drawing.Size(366, 183);
+            this.consoleRichText2.Size = new System.Drawing.Size(366, 131);
             this.consoleRichText2.TabIndex = 14;
             this.consoleRichText2.Text = "";
             // 
             // ConnectBtn2
             // 
             this.ConnectBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConnectBtn2.Location = new System.Drawing.Point(587, 8);
+            this.ConnectBtn2.Location = new System.Drawing.Point(603, 5);
             this.ConnectBtn2.Name = "ConnectBtn2";
             this.ConnectBtn2.Size = new System.Drawing.Size(87, 24);
             this.ConnectBtn2.TabIndex = 13;
@@ -200,7 +183,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(392, 12);
+            this.label2.Location = new System.Drawing.Point(408, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 16);
             this.label2.TabIndex = 12;
@@ -211,10 +194,95 @@
             this.PortComBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PortComBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PortComBox2.FormattingEnabled = true;
-            this.PortComBox2.Location = new System.Drawing.Point(442, 9);
+            this.PortComBox2.Location = new System.Drawing.Point(458, 6);
             this.PortComBox2.Name = "PortComBox2";
             this.PortComBox2.Size = new System.Drawing.Size(140, 23);
             this.PortComBox2.TabIndex = 11;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // rbTee1
+            // 
+            this.rbTee1.AutoSize = true;
+            this.rbTee1.Location = new System.Drawing.Point(296, 8);
+            this.rbTee1.Name = "rbTee1";
+            this.rbTee1.Size = new System.Drawing.Size(44, 19);
+            this.rbTee1.TabIndex = 18;
+            this.rbTee1.TabStop = true;
+            this.rbTee1.Text = "Tee";
+            this.rbTee1.UseVisualStyleBackColor = true;
+            // 
+            // rbHog1
+            // 
+            this.rbHog1.AutoSize = true;
+            this.rbHog1.Location = new System.Drawing.Point(338, 8);
+            this.rbHog1.Name = "rbHog1";
+            this.rbHog1.Size = new System.Drawing.Size(45, 19);
+            this.rbHog1.TabIndex = 19;
+            this.rbHog1.TabStop = true;
+            this.rbHog1.Text = "Hog";
+            this.rbHog1.UseVisualStyleBackColor = true;
+            // 
+            // rbHog2
+            // 
+            this.rbHog2.AutoSize = true;
+            this.rbHog2.Location = new System.Drawing.Point(730, 8);
+            this.rbHog2.Name = "rbHog2";
+            this.rbHog2.Size = new System.Drawing.Size(45, 19);
+            this.rbHog2.TabIndex = 21;
+            this.rbHog2.TabStop = true;
+            this.rbHog2.Text = "Hog";
+            this.rbHog2.UseVisualStyleBackColor = true;
+            // 
+            // rbTee2
+            // 
+            this.rbTee2.AutoSize = true;
+            this.rbTee2.Location = new System.Drawing.Point(688, 8);
+            this.rbTee2.Name = "rbTee2";
+            this.rbTee2.Size = new System.Drawing.Size(44, 19);
+            this.rbTee2.TabIndex = 20;
+            this.rbTee2.TabStop = true;
+            this.rbTee2.Text = "Tee";
+            this.rbTee2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(296, 5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(98, 29);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(688, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(98, 29);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(169, 280);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "start";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // timerLabel
+            // 
+            this.timerLabel.AutoSize = true;
+            this.timerLabel.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.timerLabel.Location = new System.Drawing.Point(250, 260);
+            this.timerLabel.Name = "timerLabel";
+            this.timerLabel.Size = new System.Drawing.Size(160, 45);
+            this.timerLabel.TabIndex = 26;
+            this.timerLabel.Text = "00:00:00";
             // 
             // Form1
             // 
@@ -222,8 +290,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(773, 301);
-            this.Controls.Add(this.led1Box2);
+            this.ClientSize = new System.Drawing.Size(784, 419);
+            this.Controls.Add(this.timerLabel);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.rbHog2);
+            this.Controls.Add(this.rbTee2);
+            this.Controls.Add(this.rbHog1);
+            this.Controls.Add(this.rbTee1);
             this.Controls.Add(this.sendBox2);
             this.Controls.Add(this.clearBtn2);
             this.Controls.Add(this.sendBtn2);
@@ -231,7 +304,6 @@
             this.Controls.Add(this.ConnectBtn2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PortComBox2);
-            this.Controls.Add(this.led1Box1);
             this.Controls.Add(this.sendBox1);
             this.Controls.Add(this.clearBtn1);
             this.Controls.Add(this.sendBtn1);
@@ -239,12 +311,15 @@
             this.Controls.Add(this.ConnectBtn1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PortComBox1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
+            this.Enabled = false;
             this.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(789, 1000);
+            this.MaximumSize = new System.Drawing.Size(800, 1000);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(789, 340);
+            this.MinimumSize = new System.Drawing.Size(800, 340);
             this.Name = "Form1";
             this.Text = "Curling Timer";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -262,8 +337,6 @@
         private System.Windows.Forms.Button sendBtn1;
         private System.Windows.Forms.Button clearBtn1;
         private System.Windows.Forms.TextBox sendBox1;
-        private System.Windows.Forms.CheckBox led1Box1;
-        private System.Windows.Forms.CheckBox led1Box2;
         private System.Windows.Forms.TextBox sendBox2;
         private System.Windows.Forms.Button clearBtn2;
         private System.Windows.Forms.Button sendBtn2;
@@ -271,6 +344,15 @@
         private System.Windows.Forms.Button ConnectBtn2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox PortComBox2;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.RadioButton rbTee1;
+        private System.Windows.Forms.RadioButton rbHog1;
+        private System.Windows.Forms.RadioButton rbHog2;
+        private System.Windows.Forms.RadioButton rbTee2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label timerLabel;
     }
 }
 

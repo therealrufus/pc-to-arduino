@@ -18,13 +18,19 @@ namespace PC_to_Arduino__form_
         String[] ports;
         SerialPort port1;
         SerialPort port2;
+        int time;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
 
         public Form1()
         {   
-            RichTextBox.CheckForIllegalCrossThreadCalls = false;            
+            RichTextBox.CheckForIllegalCrossThreadCalls = true;            
             InitializeComponent();
             getAvailableComPorts();
-
+            timeReset();
             consoleRichText1.AppendText("Aviable ports:\n");
 
             void getAvailableComPorts()
@@ -163,19 +169,28 @@ namespace PC_to_Arduino__form_
             connectBtn.Enabled = true;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void clearBtn_Click(object sender, EventArgs e)
         {
             consoleRichText1.Clear();
         }
 
-        private void consoleRichText_TextChanged(object sender, EventArgs e)
+        //stopky
+        private void timeReset()
         {
-            
+            timer.Enabled = false;
+            timerLabel.Text = $"00:00:00";
+            time = 0;
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            int timeM = 0;
+            int timeS = 0;
+            int timeMS = 0;
+            time++;
+            timeM = time / 60000;
+            timeS = (time - (time % 60000)) / 1000;
+            timeMS = (time - (time % 60000)) % 1000;
+            timerLabel.Text = $"{timeM}:{timeS}:{timeMS}";
         }
 
         private void sendBtn_Click(object sender, EventArgs e)
@@ -190,23 +205,6 @@ namespace PC_to_Arduino__form_
             port2.Write(sendBox2.Text + "\n");
             consoleRichText2.AppendText(sendBox2.Text + "\n");
             sendBox2.Clear();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (led1Box1.Checked)
-            {
-                port1.Write("#ready" + "\n");
-            }
-            else
-            {
-                port2.Write("#unready" + "\n");
-            }
         }
     }
 }
