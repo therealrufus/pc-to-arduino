@@ -16,3 +16,12 @@ H:\projekts\kerlenk\PC to Arduino\PC to Arduino (form)\obj\Debug\PC to Arduino (
 H:\projekts\kerlenk\PC to Arduino\PC to Arduino (form)\bin\Debug\PC to Arduino (form).exe.config
 H:\projekts\kerlenk\PC to Arduino\PC to Arduino (form)\bin\Debug\PC to Arduino (form).exe
 H:\projekts\kerlenk\PC to Arduino\PC to Arduino (form)\bin\Debug\PC to Arduino (form).pdb
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\bin\Debug\PC to Arduino (form).exe.config
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\bin\Debug\PC to Arduino (form).exe
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\bin\Debug\PC to Arduino (form).pdb
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\obj\Debug\PC to Arduino (form).csprojAssemblyReference.cache
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\obj\Debug\PC_to_Arduino__form_.Form1.resources
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\obj\Debug\PC_to_Arduino__form_.Properties.Resources.resources
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\obj\Debug\PC to Arduino (form).csproj.GenerateResource.cache
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\obj\Debug\PC to Arduino (form).exe
+C:\Users\filbr\Downloads\kerlenk\PC to Arduino\PC to Arduino (form)\obj\Debug\PC to Arduino (form).pdb

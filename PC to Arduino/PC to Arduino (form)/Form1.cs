@@ -17,20 +17,14 @@ namespace PC_to_Arduino__form_
         bool isConnected2 = false;
         String[] ports;
         SerialPort port1;
-        SerialPort port2;
-        int time;
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        SerialPort port2;      
 
         public Form1()
         {   
             RichTextBox.CheckForIllegalCrossThreadCalls = true;            
             InitializeComponent();
             getAvailableComPorts();
-            timeReset();
+            timer.reset(Timer);
             consoleRichText1.AppendText("Aviable ports:\n");
 
             void getAvailableComPorts()
@@ -174,25 +168,6 @@ namespace PC_to_Arduino__form_
             consoleRichText1.Clear();
         }
 
-        //stopky
-        private void timeReset()
-        {
-            timer.Enabled = false;
-            timerLabel.Text = $"00:00:00";
-            time = 0;
-        }
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            int timeM = 0;
-            int timeS = 0;
-            int timeMS = 0;
-            time++;
-            timeM = time / 60000;
-            timeS = (time - (time % 60000)) / 1000;
-            timeMS = (time - (time % 60000)) % 1000;
-            timerLabel.Text = $"{timeM}:{timeS}:{timeMS}";
-        }
-
         private void sendBtn_Click(object sender, EventArgs e)
         {
             port1.Write(sendBox1.Text + "\n");
@@ -205,6 +180,21 @@ namespace PC_to_Arduino__form_
             port2.Write(sendBox2.Text + "\n");
             consoleRichText2.AppendText(sendBox2.Text + "\n");
             sendBox2.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            timer.enable(Timer);
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            timer.disable(Timer);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            timer.reset(Timer);
         }
     }
 }
