@@ -24,7 +24,7 @@ namespace PC_to_Arduino__form_
             RichTextBox.CheckForIllegalCrossThreadCalls = true;            
             InitializeComponent();
             getAvailableComPorts();
-            timer.reset(Timer);
+            timer.reset(Timer, timerLabel, labSpeed);
             consoleRichText1.AppendText("Aviable ports:\n");
 
             void getAvailableComPorts()
@@ -34,7 +34,7 @@ namespace PC_to_Arduino__form_
                 ports = SerialPort.GetPortNames();
                 Array.Sort(ports);
             }
-
+            //nalezeni portu
             foreach (string port in ports)
             {
                 PortComBox1.Items.Add(port);
@@ -77,6 +77,7 @@ namespace PC_to_Arduino__form_
             }
         }
 
+        //pripojit k arduinu
         private SerialPort connectToArduino(ComboBox cbx, Button ConnectBtn, RichTextBox consoleRichText, Button sendBtn, int order, SerialPort port)
         {
             string selectedPort = cbx.GetItemText(cbx.SelectedItem);
@@ -116,6 +117,7 @@ namespace PC_to_Arduino__form_
             return port;
         }
 
+        //odpojit od arduina
         private SerialPort disconnectFromArduino(Button ConnectBtn, RichTextBox consoleRichText, SerialPort port, Button sendBtn, ComboBox cbx, int order)
         {
             if (order == 1)
@@ -136,6 +138,7 @@ namespace PC_to_Arduino__form_
             return port;
         }
 
+        //prijimani dat
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             if (isConnected1)
@@ -150,6 +153,7 @@ namespace PC_to_Arduino__form_
             }
         }
 
+        //zapinani a vypinani controls
         private void disableControls(Button sendBtn, Button connectBtn, ComboBox portComBox)
         {
             sendBtn.Enabled = false;
@@ -163,11 +167,11 @@ namespace PC_to_Arduino__form_
             connectBtn.Enabled = true;
         }
 
+        //clear a send
         private void clearBtn_Click(object sender, EventArgs e)
         {
             consoleRichText1.Clear();
         }
-
         private void sendBtn_Click(object sender, EventArgs e)
         {
             port1.Write(sendBox1.Text + "\n");
@@ -175,6 +179,11 @@ namespace PC_to_Arduino__form_
             sendBox1.Clear();
         }
 
+        //clear 2 a send 2
+        private void clearBtn2_Click(object sender, EventArgs e)
+        {
+            consoleRichText1.Clear();
+        }
         private void sendBtn2_Click(object sender, EventArgs e)
         {
             port2.Write(sendBox2.Text + "\n");
@@ -182,19 +191,45 @@ namespace PC_to_Arduino__form_
             sendBox2.Clear();
         }
 
+        //timer buttons
         private void button1_Click(object sender, EventArgs e)
         {
             timer.enable(Timer);
         }
-
         private void btnStop_Click(object sender, EventArgs e)
         {
             timer.disable(Timer);
         }
-
         private void btnClear_Click(object sender, EventArgs e)
         {
-            timer.reset(Timer);
+            timer.reset(Timer, timerLabel, labSpeed);
+        }
+
+        //timer
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            double lenght = 0;
+            if (rbTH.Checked)
+            {
+                lenght = Convert.ToDouble(6.4);
+            }
+            else
+            {
+                lenght = Convert.ToDouble(nudLenght.Value);
+            }
+            timer.tick(timerLabel, labSpeed, lenght);
+        }
+
+        private void rbTH_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbTH.Checked)
+            {
+                nudLenght.Enabled = false;
+            }
+            else
+            {
+                nudLenght.Enabled = true;
+            }
         }
     }
 }
